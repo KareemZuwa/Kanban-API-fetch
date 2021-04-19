@@ -2,19 +2,22 @@ const apiURL = '../api/people.json'
 const nameElement = document.getElementById('showName')
 const randomBtn = document.getElementById('random-btn')
 
-let showName = (name) => {
-    nameElement.innerHTML = `${name}`
-    
+let showPerson = (person) => {
+    nameElement.innerHTML = `Name: ${person.name}, Age: ${person.age}, Occupation: ${person.occupation}, ${person.img}`
 }
 
-getRandomName = () => {
+
+
+
+
+getRandomPerson = () => {
     fetch(apiURL)
         .then(res => res.json())
-        .then(res => showName((res[Math.floor(Math.random() * 20)].name)))
+        .then(res => showPerson((res[Math.floor(Math.random() * 20)])))
 }
 
 
 randomBtn.addEventListener('click', () => {
-    showName('')
-    getRandomName()
+    showPerson('')
+    getRandomPerson()
 });
